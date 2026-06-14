@@ -1,0 +1,268 @@
+[
+  {
+    "id": 1,
+    "intent": "greeting",
+    "patterns": [
+      "hello",
+      "hi",
+      "hey",
+      "good morning",
+      "good afternoon",
+      "good evening",
+      "hi there",
+      "howdy"
+    ],
+    "response": "Hello! Welcome to the NAUB Enquiry Chatbot. I am here to help you with information about admissions, school fees, academic programmes, hostel, and more. How can I assist you today?"
+  },
+  {
+    "id": 2,
+    "intent": "farewell",
+    "patterns": [
+      "bye",
+      "goodbye",
+      "see you",
+      "thank you",
+      "thanks",
+      "that will be all",
+      "exit",
+      "quit"
+    ],
+    "response": "Thank you for using the NAUB Enquiry Chatbot. If you need further assistance, feel free to visit the relevant office or contact us at info@naub.edu.ng. Goodbye!"
+  },
+  {
+    "id": 3,
+    "intent": "admission_requirements",
+    "patterns": [
+      "admission requirements",
+      "how do I gain admission",
+      "what are the requirements for admission",
+      "entry requirements",
+      "how to apply to NAUB",
+      "apply for admission",
+      "requirements to get into NAUB",
+      "how can I be admitted"
+    ],
+    "response": "To gain admission into NAUB, you must: (1) Sit for JAMB UTME and select NAUB as your institution. (2) Meet the minimum JAMB cut-off mark (usually 180 and above, subject to change). (3) Possess a minimum of 5 credit passes in WAEC/NECO/NABTEB at no more than two sittings, including English Language and Mathematics. (4) Participate in the Post-UTME screening exercise. For further details, contact the Admissions Office."
+  },
+  {
+    "id": 4,
+    "intent": "jamb_cutoff",
+    "patterns": [
+      "JAMB cut off mark",
+      "what is the cut off mark for NAUB",
+      "minimum JAMB score",
+      "JAMB score required",
+      "what score do I need in JAMB",
+      "cut off mark"
+    ],
+    "response": "The NAUB JAMB cut-off mark is generally 180 and above. However, this may vary by faculty and programme each year. Please check the official NAUB website at www.naub.edu.ng or contact the Admissions Office for the current session's cut-off marks."
+  },
+  {
+    "id": 5,
+    "intent": "post_utme",
+    "patterns": [
+      "post UTME",
+      "post utme screening",
+      "when is post UTME",
+      "how do I register for post UTME",
+      "post utme form",
+      "screening exercise",
+      "post utme date"
+    ],
+    "response": "The Post-UTME screening exercise is conducted after the JAMB results are released. To participate: (1) Visit www.naub.edu.ng to obtain and fill the Post-UTME form. (2) Pay the screening fee as specified. (3) Come for the screening on the announced date with all required documents. Dates are announced on the university website and notice boards. Contact the Admissions Office for more details."
+  },
+  {
+    "id": 6,
+    "intent": "admission_list",
+    "patterns": [
+      "admission list",
+      "have I been admitted",
+      "where can I check my admission",
+      "how to check admission status",
+      "check admission list",
+      "am I admitted"
+    ],
+    "response": "You can check your admission status by: (1) Visiting the JAMB portal at www.jamb.gov.ng and checking your admission status. (2) Visiting the NAUB official website at www.naub.edu.ng. (3) Visiting the Admissions Office at NAUB, Biu. Please have your JAMB Registration Number ready when checking."
+  },
+  {
+    "id": 7,
+    "intent": "available_programmes",
+    "patterns": [
+      "available courses",
+      "what courses are offered",
+      "programmes available at NAUB",
+      "list of courses",
+      "what can I study at NAUB",
+      "courses offered",
+      "departments in NAUB",
+      "faculties in NAUB"
+    ],
+    "response": "NAUB offers programmes across several faculties including: Faculty of Humanities, Faculty of Social Sciences, Faculty of Management Sciences, and Faculty of Science. Programmes include Computer Science, Mass Communication, Business Administration, Accounting, Political Science, and others. For a full list of accredited programmes, please visit www.naub.edu.ng or contact the Academic Registry."
+  },
+  {
+    "id": 8,
+    "intent": "school_fees",
+    "patterns": [
+      "school fees",
+      "how much is the school fees",
+      "tuition fees",
+      "what is the cost of schooling",
+      "fee schedule",
+      "how much do I pay",
+      "fees for fresh students",
+      "fees for returning students"
+    ],
+    "response": "School fees at NAUB vary depending on the programme and level of study. Fresh students pay a higher amount due to acceptance fee and other one-time charges. For the current fee schedule, please visit the Bursary Department at NAUB or the official website at www.naub.edu.ng, as fees are subject to review each session."
+  },
+  {
+    "id": 9,
+    "intent": "acceptance_fee",
+    "patterns": [
+      "acceptance fee",
+      "how much is the acceptance fee",
+      "how to pay acceptance fee",
+      "acceptance fee payment"
+    ],
+    "response": "The acceptance fee is a one-time payment made by newly admitted students to confirm their admission. The amount is announced alongside the admission list. To pay: (1) Obtain a payment invoice from the Bursary Department or the NAUB portal. (2) Make payment via the approved bank or online platform. (3) Keep your receipt for registration. Contact the Bursary Department for the exact amount and payment procedure."
+  },
+  {
+    "id": 10,
+    "intent": "hostel_accommodation",
+    "patterns": [
+      "hostel",
+      "accommodation",
+      "is hostel available",
+      "how do I get a hostel room",
+      "hostel fees",
+      "hostel allocation",
+      "student accommodation at NAUB"
+    ],
+    "response": "NAUB provides on-campus hostel accommodation for students. Hostel allocation is typically done during the registration period. To apply: (1) Register for hostel accommodation at the Student Affairs Division. (2) Pay the hostel fee as specified. (3) Allocation is made based on availability. Contact the Student Affairs Division for more details on availability and current hostel fees."
+  },
+  {
+    "id": 11,
+    "intent": "academic_calendar",
+    "patterns": [
+      "academic calendar",
+      "resumption date",
+      "when does school resume",
+      "lecture schedule",
+      "when is registration",
+      "exam timetable",
+      "school calendar",
+      "semester dates"
+    ],
+    "response": "The academic calendar including resumption dates, registration periods, lecture schedules, and examination timetables is published at the beginning of each academic session. Please check the official NAUB website at www.naub.edu.ng or the notice boards across campus. You can also contact the Academic Registry for the current session's calendar."
+  },
+  {
+    "id": 12,
+    "intent": "course_registration",
+    "patterns": [
+      "course registration",
+      "how to register courses",
+      "course form",
+      "register my courses",
+      "GST registration",
+      "how to add courses"
+    ],
+    "response": "Course registration is done online through the NAUB student portal. Steps: (1) Log in to the student portal at the NAUB website. (2) Select the courses for the current semester. (3) Confirm and submit your course form. (4) Print a copy for your records. Ensure your school fees are cleared before attempting course registration. Contact the Academic Registry for assistance."
+  },
+  {
+    "id": 13,
+    "intent": "change_of_course",
+    "patterns": [
+      "change of course",
+      "how to change department",
+      "transfer to another department",
+      "switch course",
+      "can I change my programme"
+    ],
+    "response": "Change of course at NAUB is possible subject to availability and meeting the requirements of the new programme. To apply: (1) Obtain a Change of Course form from the Academic Registry. (2) Get approval from both your current and intended department heads. (3) Submit the completed form to the Academic Registry before the deadline. Note: Change of course is not guaranteed and is subject to senate approval."
+  },
+  {
+    "id": 14,
+    "intent": "result_verification",
+    "patterns": [
+      "result verification",
+      "verify my result",
+      "how to verify result",
+      "transcript",
+      "statement of result",
+      "remark of result",
+      "apply for remark",
+      "result remark"
+    ],
+    "response": "For result verification or transcript requests, visit the Academic Registry at NAUB. For result remark: (1) Obtain a Remark Form from the Academic Registry. (2) Pay the prescribed fee at the Bursary. (3) Submit the form within the allowed period after results are released. For transcript requests, please allow 2 to 4 weeks for processing. Contact the Academic Registry for current fees and deadlines."
+  },
+  {
+    "id": 15,
+    "intent": "contact_admissions",
+    "patterns": [
+      "admissions office contact",
+      "contact admissions",
+      "admissions office phone number",
+      "admissions email",
+      "how to reach admissions"
+    ],
+    "response": "You can contact the NAUB Admissions Office through the following channels: Email: admissions@naub.edu.ng | Website: www.naub.edu.ng | Physical Location: Admissions Office, Administrative Block, NAUB, Biu, Borno State. Office Hours: Monday to Friday, 8:00 AM to 4:00 PM."
+  },
+  {
+    "id": 16,
+    "intent": "contact_bursary",
+    "patterns": [
+      "bursary contact",
+      "bursary department",
+      "contact bursary",
+      "fee payment office",
+      "who handles fees"
+    ],
+    "response": "For all payment-related enquiries, contact the NAUB Bursary Department: Location: Bursary Department, Administrative Block, NAUB, Biu, Borno State. Email: bursary@naub.edu.ng | Office Hours: Monday to Friday, 8:00 AM to 4:00 PM."
+  },
+  {
+    "id": 17,
+    "intent": "contact_ict",
+    "patterns": [
+      "ICT unit",
+      "contact ICT",
+      "ICT directorate",
+      "technical support",
+      "portal not working",
+      "login issues",
+      "student portal help"
+    ],
+    "response": "For technical issues such as portal login problems, contact the NAUB ICT Directorate: Location: ICT Unit Building, NAUB Campus, Biu, Borno State. Email: ict@naub.edu.ng | Office Hours: Monday to Friday, 8:00 AM to 4:00 PM."
+  },
+  {
+    "id": 18,
+    "intent": "location_facilities",
+    "patterns": [
+      "where is the library",
+      "location of the library",
+      "where is the ICT building",
+      "where is the hostel",
+      "where is the faculty of science",
+      "where is the admin block",
+      "campus location",
+      "how to find"
+    ],
+    "response": "Key locations on the NAUB campus include: Library — near the academic blocks, central campus. ICT Directorate — ICT Unit Building, eastern part of campus. Hostels — student residential area, western part of campus. Administrative Block — main entrance area. Faculty buildings are situated across campus; ask security officers or check the campus map at the main gate for precise directions."
+  },
+  {
+    "id": 19,
+    "intent": "student_affairs",
+    "patterns": [
+      "student affairs",
+      "Dean of Students",
+      "student welfare",
+      "clubs and societies",
+      "student union"
+    ],
+    "response": "The Student Affairs Division handles student welfare, clubs, societies, and accommodation. Contact them at: Location: Student Affairs Division, Administrative Block, NAUB, Biu. Office Hours: Monday to Friday, 8:00 AM to 4:00 PM. They also coordinate the Student Union Government (SUG) activities."
+  },
+  {
+    "id": 20,
+    "intent": "fallback",
+    "patterns": [],
+    "response": "I am sorry, I did not quite understand your question. Could you please rephrase it? You can ask me about admissions, school fees, programmes, hostel, academic calendar, course registration, result verification, or contact information for any NAUB office. Alternatively, you can contact us directly at info@naub.edu.ng."
+  }
+]

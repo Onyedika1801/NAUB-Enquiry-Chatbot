@@ -226,3 +226,98 @@ body {
     .message { max-width: 94%; }
     .chat-header h1 { font-size: 14px; }
 }
+
+/* ── Updated Header — user pill + actions ─────────── */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 5px 12px 5px 5px;
+    max-width: 220px;
+}
+
+.user-pic {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.user-initial {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--naub-gold);
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.user-badge {
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.badge-student  { color: var(--naub-gold); }
+.badge-aspiring { color: #a8e6bf; }
+
+.btn-new-chat {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.30);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+.btn-new-chat:hover { background: rgba(255,255,255,0.28); }
+
+.btn-logout {
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+.btn-logout:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+
+/* ── Responsive — hide user pill text on mobile ───── */
+@media (max-width: 600px) {
+    .user-pill { max-width: 40px; padding: 5px; }
+    .user-info  { display: none; }
+    .btn-new-chat, .btn-logout { padding: 5px 9px; font-size: 11px; }
+    .user-name  { max-width: 70px; }
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAUB Enquiry Assistant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chatbot/css/style.css' %}" />
+</head>
+<body>
+
+<!-- ── Header ─────────────────────────────────────── -->
+<header class="chat-header">
+    <div class="header-left">
+        <div class="bot-avatar">🎓</div>
+        <div class="header-info">
+            <h1>NAUB Enquiry Assistant</h1>
+            <span class="status-dot"></span>
+            <span class="status-text">Online &mdash; Ready to help</span>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <!-- User pill -->
+        <div class="user-pill">
+            {% if picture_url %}
+                <img class="user-pic" src="{{ picture_url }}" alt="Avatar" referrerpolicy="no-referrer" />
+            {% else %}
+                <div class="user-initial">{{ display_name|slice:":1"|upper }}</div>
+            {% endif %}
+            <div class="user-info">
+                <span class="user-name">{{ display_name }}</span>
+                <span class="user-badge {% if user_type == 'existing' %}badge-student{% else %}badge-aspiring{% endif %}">
+                    {% if user_type == 'existing' %}
+                        🎓 Student {% if matric_number %}· {{ matric_number }}{% endif %}
+                    {% else %}
+                        🌟 Aspiring
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+     <a href="{% url 'chatbot:clear_session' %}" class="btn-new-chat" style="text-decoration: none; display: inline-flex; align-items: center;" title="Start a new conversation">
+    ↻ New Chat
+</a>
+
+
+
+        <a href="/accounts/logout/" class="btn-logout" title="Sign out">
+            Sign out
+        </a>
+    </div>
+</header>
+
+<!-- ── Chat Window ────────────────────────────────── -->
+<main class="chat-window" id="chatWindow">
+
+    <!-- Welcome message -->
+      {% if not history %}
+    <div class="message bot-message" id="welcomeMsg">
+        <div class="avatar">🎓</div>
+        <div class="bubble">
+            <p>Hello, <strong>{{ display_name }}</strong>! Welcome to the <strong>NAUB Enquiry Assistant</strong>.</p>
+            <p>I can help you with:</p>
+            <ul>
+                <li>Admissions &amp; JAMB cut-off marks</li>
+                <li>School fees &amp; payment procedures</li>
+                <li>Available programmes &amp; faculties</li>
+                <li>Hostel accommodation</li>
+                <li>Academic calendar &amp; registration</li>
+                <li>Campus locations</li>
+                <li>Change of course &amp; result verification</li>
+            </ul>
+            <p>Type your question below to get started.</p>
+            <span class="timestamp">Just now</span>
+        </div>
+    </div>
+     {% endif %}
+    <!-- Prior conversation history -->
+    
+    {% for msg in history %}
+    <div class="message user-message">
+        <div class="bubble">
+            {{ msg.user_query }}
+            <span class="timestamp">{{ msg.timestamp|date:"H:i" }}</span>
+        </div>
+        <div class="avatar user-av">
+            {% if picture_url %}
+                <img src="{{ picture_url }}" alt="" referrerpolicy="no-referrer" style="width:100%;height:100%;border-radius:50%;object-fit:cover;" />
+            {% else %}
+                {{ display_name|slice:":1"|upper }}
+            {% endif %}
+        </div>
+    </div>
+    <div class="message bot-message">
+        <div class="avatar">🎓</div>
+        <div class="bubble">
+            {{ msg.bot_response }}
+            <span class="timestamp">{{ msg.timestamp|date:"H:i" }}</span>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- Typing indicator -->
+    <div class="message bot-message" id="typingIndicator" style="display:none;">
+        <div class="avatar">🎓</div>
+        <div class="bubble typing-bubble">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
+</main>
+
+<!-- ── Input Bar ──────────────────────────────────── -->
+<footer class="chat-footer">
+    <div class="input-wrapper">
+        <textarea
+            id="userInput"
+            placeholder="Type your question here..."
+            rows="1"
+            maxlength="500"
+            aria-label="Type your message"
+        ></textarea>
+        <button id="sendBtn" aria-label="Send message">&#10148;</button>
+    </div>
+    <p class="disclaimer">
+        NAUB Chatbot &bull; Responses are for guidance only.
+        For official matters, contact the relevant office.
+    </p>
+</footer>
+
+<input type="hidden" id="sessionId" value="{{ session_id }}" />
+
+<script src="{% static 'chatbot/js/chat.js' %}"></script>
+</body>
+</html>

@@ -100,17 +100,20 @@ SOCIALACCOUNT_LOGIN_ON_GET = True   # skip the "confirm social login" page
 #
 # Option B: replace the os.environ.get() with your actual values directly.
 # Get credentials at: console.cloud.google.com → APIs & Services → Credentials
+import os
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
         "AUTH_PARAMS": {"access_type": "online"},
         "APP": {
-            "client_id": "387449387609-ibmktf6gfbhdugopev7dcqgr85huun5v.apps.googleusercontent.com",
-            "secret": "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",
+            "client_id": os.environ.get("GOOGLE_CLIENT_ID", ""),
+            "secret": os.environ.get("GOOGLE_CLIENT_SECRET", ""),
             "key": "",
         },
     }
 }
+
 
 # ── Sessions ──────────────────────────────────────────────
 SESSION_ENGINE = "django.contrib.sessions.backends.db"

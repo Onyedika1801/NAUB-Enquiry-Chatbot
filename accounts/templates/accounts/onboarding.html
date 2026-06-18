@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome — NAUB Enquiry Assistant</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --green:  #1a5c2a;
+            --green2: #14471f;
+            --gold:   #c8a800;
+            --white:  #ffffff;
+            --gray:   #f5f7fa;
+            --text:   #1a1a2e;
+            --muted:  #6b7280;
+            --border: #e5e7eb;
+            --font:   'Segoe UI', Arial, sans-serif;
+        }
+
+        html, body {
+            min-height: 100vh;
+            font-family: var(--font);
+            background: var(--gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        /* ── Header strip ─────────────────────────────── */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: 56px;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            gap: 10px;
+        }
+
+        .top-bar-logo {
+            width: 34px; height: 34px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 18px;
+        }
+
+        .top-bar-name {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .top-bar-name span { color: var(--gold); }
+
+        /* ── Main card ─────────────────────────────────── */
+        .card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px 44px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin-top: 56px;
+        }
+
+        /* User profile row */
+        .profile-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .profile-avatar {
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--green);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 26px;
+            color: var(--white);
+            font-weight: 700;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 3px;
+        }
+
+        .profile-info p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* Step heading */
+        .step-heading {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .step-sub {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        /* Selection cards */
+        .type-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .type-card {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 16px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s, transform 0.1s;
+            text-align: center;
+            position: relative;
+        }
+
+        .type-card:hover {
+            border-color: var(--green);
+            background: #f0f9f3;
+        }
+
+        .type-card.selected {
+            border-color: var(--green);
+            background: #f0f9f3;
+        }
+
+        .type-card.selected::after {
+            content: "✓";
+            position: absolute;
+            top: 10px; right: 12px;
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .type-card input[type="radio"] {
+            position: absolute;
+            opacity: 0; pointer-events: none;
+        }
+
+        .type-icon {
+            font-size: 34px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .type-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .type-desc {
+            font-size: 12px;
+            color: var(--muted);
+            line-height: 1.4;
+        }
+
+        /* Matric number field */
+        .matric-section {
+            display: none;
+            margin-bottom: 24px;
+            animation: fadeIn 0.25s ease;
+        }
+
+        .matric-section.visible { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .field-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .field-hint {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: normal;
+        }
+
+        .matric-input {
+            width: 100%;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            padding: 11px 14px;
+            font-size: 14px;
+            font-family: var(--font);
+            outline: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: border-color 0.2s;
+        }
+
+        .matric-input::placeholder { text-transform: none; letter-spacing: 0; }
+        .matric-input:focus { border-color: var(--green); }
+
+        /* Error box */
+        .error-box {
+            background: #fff1f1;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #b91c1c;
+            margin-bottom: 20px;
+        }
+
+        /* Submit button */
+        .btn-continue {
+            width: 100%;
+            background: var(--green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn-continue:hover { background: var(--green2); }
+        .btn-continue:active { transform: scale(0.98); }
+
+        @media (max-width: 480px) {
+            .card { padding: 32px 20px; }
+            .type-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-logo">🎓</div>
+    <span class="top-bar-name">NAUB <span>Enquiry Assistant</span></span>
+</div>
+
+<div class="card">
+
+    <!-- Profile row -->
+    <div class="profile-row">
+        <div class="profile-avatar">
+            {% if picture_url %}
+                <img src="{{ picture_url }}" alt="Profile picture" referrerpolicy="no-referrer" />
+            {% else %}
+                {{ display_name|slice:":1"|upper }}
+            {% endif %}
+        </div>
+        <div class="profile-info">
+            <h2>Welcome, {{ display_name }}! 👋</h2>
+            <p>Let's set up your account — it only takes a second.</p>
+        </div>
+    </div>
+
+    {% if error %}
+    <div class="error-box">{{ error }}</div>
+    {% endif %}
+
+    <p class="step-heading">Who are you?</p>
+    <p class="step-sub">
+        This helps us personalize your experience and log your enquiries correctly.
+    </p>
+
+    <form method="POST" id="onboardingForm">
+        {% csrf_token %}
+
+        <div class="type-cards">
+            <!-- Existing student card -->
+            <label class="type-card" id="card-existing" for="type-existing">
+                <input type="radio" name="user_type" id="type-existing" value="existing" />
+                <span class="type-icon">🎓</span>
+                <span class="type-label">Current Student</span>
+                <span class="type-desc">I'm currently enrolled at NAUB</span>
+            </label>
+
+            <!-- Aspiring student card -->
+            <label class="type-card" id="card-aspiring" for="type-aspiring">
+                <input type="radio" name="user_type" id="type-aspiring" value="aspiring" />
+                <span class="type-icon">🌟</span>
+                <span class="type-label">Aspiring Student</span>
+                <span class="type-desc">I want to study at NAUB</span>
+            </label>
+        </div>
+
+        <!-- Matric number field — shown only for existing students -->
+        <div class="matric-section" id="matricSection">
+            <label class="field-label" for="matric_number">
+                Matric Number
+                <span class="field-hint">(optional — helps us personalize your experience)</span>
+            </label>
+            <input
+                type="text"
+                name="matric_number"
+                id="matric_number"
+                class="matric-input"
+                placeholder="e.g. NAUB/23/ENG/001"
+                maxlength="30"
+                autocomplete="off"
+            />
+        </div>
+
+        <button type="submit" class="btn-continue" id="continueBtn">
+            Continue to Chatbot →
+        </button>
+    </form>
+
+</div>
+
+<script>
+    const cardExisting = document.getElementById("card-existing");
+    const cardAspiring = document.getElementById("card-aspiring");
+    const radioExisting = document.getElementById("type-existing");
+    const radioAspiring = document.getElementById("type-aspiring");
+    const matricSection = document.getElementById("matricSection");
+
+    function updateSelection() {
+        cardExisting.classList.toggle("selected", radioExisting.checked);
+        cardAspiring.classList.toggle("selected", radioAspiring.checked);
+        matricSection.classList.toggle("visible", radioExisting.checked);
+    }
+
+    radioExisting.addEventListener("change", updateSelection);
+    radioAspiring.addEventListener("change", updateSelection);
+
+    // Click anywhere on card = select radio
+    [cardExisting, cardAspiring].forEach(card => {
+        card.addEventListener("click", () => {
+            const radio = card.querySelector("input[type='radio']");
+            radio.checked = true;
+            updateSelection();
+        });
+    });
+</script>
+
+</body>
+</html>
